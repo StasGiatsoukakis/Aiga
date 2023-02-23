@@ -72,10 +72,7 @@ public class Controller : MonoBehaviour
 
 animator.SetBool("IsWalking",true);
              }
-             else
-             {
- animator.SetBool("jumping",true);
-             }
+            
              
                  
         }
@@ -101,10 +98,7 @@ animator.SetBool("IsWalking",true);
 
                animator.SetBool("IsWalking",true);
              }
-             else
-             {
-            animator.SetBool("jumping",true);
-             }
+            
         }
 
 
