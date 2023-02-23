@@ -17,6 +17,7 @@ public class Controller : MonoBehaviour
 [SerializeField] AudioSource jump;
 //i use the onAir boolean so my player doesn't get stack on air pushing a wall
   private bool onAir;
+  private bool attacked;
 
   [SerializeField] float movespeed=15f;
   [SerializeField] float jumpHeight=15f;
@@ -72,6 +73,10 @@ public class Controller : MonoBehaviour
 
 animator.SetBool("IsWalking",true);
              }
+             else if(Input.GetKey(KeyCode.Space)&&grounded!=true)
+             {
+                animator.SetBool("jumping",true);
+             }
             
              
                  
@@ -86,6 +91,7 @@ animator.SetBool("IsWalking",true);
             audioSource.PlayOneShot(footsteps);
 
                 }
+
           }
                //for flipping the character to the left
 
@@ -97,6 +103,10 @@ animator.SetBool("IsWalking",true);
              {
 
                animator.SetBool("IsWalking",true);
+             }
+              else if(Input.GetKey(KeyCode.Space)&&grounded!=true)
+             {
+                animator.SetBool("jumping",true);
              }
             
         }
@@ -110,11 +120,13 @@ animator.SetBool("IsWalking",true);
 
 //////////////////////////////////////////////////////////////
 //ATTACK
-        if(Input.GetKeyDown(KeyCode.F))
+        if(Input.GetKeyDown(KeyCode.F)&&attacked==false)
         {
-
+           
             rb2d.velocity=transform.right*30f;
              animator.SetBool("attacking",true);
+             attacked=true;
+
               StartCoroutine(StartCountDown());
         }
       
@@ -124,8 +136,9 @@ animator.SetBool("IsWalking",true);
     }
 
    
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionStay2D(Collision2D other)
     {
+        
         
         if(other.gameObject.tag=="ground")
         {
@@ -154,6 +167,7 @@ animator.SetBool("IsWalking",true);
     {
         yield return new WaitForSecondsRealtime(1);
          animator.SetBool("attacking",false);
+         attacked=false;
         
     }
 
