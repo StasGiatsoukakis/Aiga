@@ -11,7 +11,7 @@ public class Controller : MonoBehaviour
   [SerializeField] AudioClip footsteps;
   
   [SerializeField] AudioSource audioSource;
-
+[SerializeField] AudioSource boostedJump;
   
 
 [SerializeField] AudioSource jump;
@@ -160,6 +160,14 @@ animator.SetBool("IsWalking",true);
         if(other.gameObject.tag=="side")
         {
            onAir=false;
+        }
+
+        if(other.gameObject.tag=="mushroom")
+        {
+             rb2d.velocity = new Vector2(rb2d.velocity.x,jumpHeight*1.5f);
+             animator.SetBool("jumping",true);
+              boostedJump.Play();
+
         }
         
     }

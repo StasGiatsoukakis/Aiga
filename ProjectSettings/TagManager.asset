@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ground
   - side
+  - ice
+  - mushroom
   layers:
   - Default
   - TransparentFX
