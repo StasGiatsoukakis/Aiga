@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 002889513d7e4dc46bea91d75da976a7
+guid: a98ba719777e76143a5ca45400bb1c84
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,7 +93,7 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Layer 1
+  - name: Layer 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -103,8 +103,8 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 741
-      height: 882
-    spriteID: 61531486a7507e94e8e5fe0b3f981837
+      height: 529
+    spriteID: b3315dd21c007e24583c1c93c212a29b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -114,7 +114,29 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 4}
-    spritePosition: {x: 147, y: 71}
+    spritePosition: {x: 147, y: 424}
+  - name: Layer 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 541
+      width: 729
+      height: 506
+    spriteID: 68c1791ead8f5044291c4e3ac31db851
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 541}
+    spritePosition: {x: 151, y: 71}
   characterData:
     bones: []
     parts: []
@@ -145,13 +167,23 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
+  - name: Layer 2
+    spriteName: Layer 2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b3315dd21c007e24583c1c93c212a29b
+    layerID: 8
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Layer 1
     spriteName: Layer 1
     isGroup: 0
     parentIndex: -1
-    spriteID: 61531486a7507e94e8e5fe0b3f981837
-    layerID: 2
-    mosaicPosition: {x: 4, y: 4}
+    spriteID: 68c1791ead8f5044291c4e3ac31db851
+    layerID: 6
+    mosaicPosition: {x: 4, y: 541}
     flatten: 0
     isImported: 1
     isVisible: 1

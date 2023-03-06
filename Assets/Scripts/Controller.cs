@@ -7,6 +7,9 @@ public class Controller : MonoBehaviour
   private Animator animator;
   private Rigidbody2D rb2d;
   private bool grounded;
+  bool MushroomJump;
+
+  public bool OnAttack;
 
   [SerializeField] AudioClip footsteps;
   
@@ -45,7 +48,10 @@ public class Controller : MonoBehaviour
         }
         else
         {
+              if(MushroomJump!=true)
+            {
               animator.SetBool("jumping",false);
+            }
         }
 
 
@@ -115,20 +121,24 @@ animator.SetBool("IsWalking",true);
          else
         {
             audioSource.Stop();
-             animator.SetBool("IsWalking",false);
+           
+                animator.SetBool("IsWalking",false);
+            
+             
         }
 
 //////////////////////////////////////////////////////////////
 //ATTACK
         if(Input.GetKeyDown(KeyCode.F)&&attacked==false)
         {
-           
-            rb2d.velocity=transform.right*30f;
+           OnAttack=true;
+            rb2d.velocity=transform.right*50f;
              animator.SetBool("attacking",true);
              attacked=true;
 
               StartCoroutine(StartCountDown());
         }
+        
       
 
        
@@ -164,10 +174,12 @@ animator.SetBool("IsWalking",true);
 
         if(other.gameObject.tag=="mushroom")
         {
+
              rb2d.velocity = new Vector2(rb2d.velocity.x,jumpHeight*1.5f);
+             MushroomJump=true;
              animator.SetBool("jumping",true);
               boostedJump.Play();
-
+                 StartCoroutine(StartCountDownJump());
         }
         
     }
@@ -176,6 +188,18 @@ animator.SetBool("IsWalking",true);
         yield return new WaitForSecondsRealtime(1);
          animator.SetBool("attacking",false);
          attacked=false;
+         OnAttack=false;
+        
+    }
+     IEnumerator StartCountDownJump()
+    {
+        while(grounded==false)
+        {
+             yield return new WaitForSecondsRealtime(0);
+             MushroomJump=false;
+        }
+        
+        
         
     }
 

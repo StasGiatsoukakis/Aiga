@@ -8,6 +8,11 @@ TagManager:
   - side
   - ice
   - mushroom
+  - life
+  - enemy
+  - fliper1
+  - fliper2
+  - brick
   layers:
   - Default
   - TransparentFX
