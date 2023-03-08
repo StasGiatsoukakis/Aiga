@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WallsDestraction : MonoBehaviour
 {
+    [SerializeField ] new ParticleSystem particleSystem;
+
+    
     Controller controller;
    
    int cnt=0;
@@ -11,7 +14,7 @@ public class WallsDestraction : MonoBehaviour
    void Start()
    {
        controller=GameObject.Find("GoatCuttedd 1").GetComponent<Controller>();
-     
+       
 
    }
    
@@ -30,8 +33,18 @@ public class WallsDestraction : MonoBehaviour
     {
         if((other.gameObject.tag=="Player")&&(controller.OnAttack==true))
         {
-             
+             particleSystem.Play();
               cnt++;
         }
     }
+    //  void OnCollisionExit2D(Collision2D other)
+    // {
+
+    //     if((other.gameObject.tag=="Player"))
+    //     {
+    //          particleSystem.Stop();
+             
+    //     }
+        
+    // }
 }

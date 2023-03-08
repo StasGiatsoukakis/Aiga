@@ -13,6 +13,7 @@ TagManager:
   - fliper1
   - fliper2
   - brick
+  - powerUp
   layers:
   - Default
   - TransparentFX

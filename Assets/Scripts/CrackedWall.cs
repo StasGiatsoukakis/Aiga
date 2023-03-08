@@ -5,6 +5,7 @@ using UnityEngine;
 public class CrackedWall : MonoBehaviour
 {
      Controller controller;
+      [SerializeField ] new ParticleSystem particleSystem;
    int cnt=0;
    void Start()
    {
@@ -23,8 +24,18 @@ public class CrackedWall : MonoBehaviour
     {
         if((other.gameObject.tag=="Player")&&(controller.OnAttack==true))
         {
-             
+             particleSystem.Play();
               cnt++;
         }
+    }
+     void OnCollisionExit2D(Collision2D other)
+    {
+
+        if((other.gameObject.tag=="Player"))
+        {
+             particleSystem.Stop();
+             
+        }
+        
     }
 }

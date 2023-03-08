@@ -22,8 +22,8 @@ public class Controller : MonoBehaviour
   private bool onAir;
   private bool attacked;
 
-  [SerializeField] float movespeed=15f;
-  [SerializeField] float jumpHeight=15f;
+  public float movespeed=15f;
+  public float jumpHeight=15f;
     // Start is called before the first frame update
 
 
@@ -159,6 +159,7 @@ animator.SetBool("IsWalking",true);
         {
            onAir=true;
         }
+
     }
     
     void OnCollisionExit2D(Collision2D other)
@@ -175,7 +176,7 @@ animator.SetBool("IsWalking",true);
         if(other.gameObject.tag=="mushroom")
         {
 
-             rb2d.velocity = new Vector2(rb2d.velocity.x,jumpHeight*1.5f);
+             rb2d.velocity = new Vector2(rb2d.velocity.x,jumpHeight*2f);
              MushroomJump=true;
              animator.SetBool("jumping",true);
               boostedJump.Play();

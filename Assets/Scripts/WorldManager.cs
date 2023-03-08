@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class WorldManager : MonoBehaviour
 {
-    public int lifes=1;
+    public uint lifes=1;
      [SerializeField] GameObject life1;
   [SerializeField] GameObject life2;
      [SerializeField] GameObject life3;
 
      GameObject lifeHead;
+     [SerializeField] new ParticleSystem particleSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,10 @@ public class WorldManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(lifes<1)
+        {
+            lifes=1;
+        }
         
         if(Input.GetKey(KeyCode.Escape))
         {
@@ -41,15 +46,12 @@ public class WorldManager : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Sent when another object enters a trigger collider attached to this
-    /// object (2D physics only).
-    /// </summary>
-    /// <param name="other">The other Collider2D involved in this collision.</param>
+    
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag=="life")
         {
+            particleSystem.Play();
             lifes++;
         }
     }
