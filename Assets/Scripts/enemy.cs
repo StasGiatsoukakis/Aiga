@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class enemy : MonoBehaviour
 {
-    
+    [SerializeField] Transform EnemyRespawnPossition;
     [SerializeField] Transform position;
     BoxCollider2D boxCollider2D;
     Controller controller;
@@ -27,9 +27,16 @@ public class enemy : MonoBehaviour
         {
              boxCollider2D.enabled=false;
            transform.position = Vector2.MoveTowards(transform.position, position.position, 50f*Time.deltaTime);
+            StartCoroutine(StartCountDownEnemyRespawn());
         }
        
           
+    }
+    IEnumerator StartCountDownEnemyRespawn()
+    {
+      yield return new WaitForSecondsRealtime(1f);
+boxCollider2D.enabled=true;
+transform.position=EnemyRespawnPossition.position;
     }
    
 }

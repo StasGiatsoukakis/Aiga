@@ -10,9 +10,9 @@ public class Death : MonoBehaviour
   Animator animator;
   WorldManager worldManager;
   Controller controller;
-  enemy enemy;
-  GameObject HeadgeHog;
-  BoxCollider2D boxCollider2D;
+  [SerializeField]enemy enemy;
+  [SerializeField]GameObject HeadgeHog;
+ [SerializeField] BoxCollider2D boxCollider2D;
 
   public bool death;
       
@@ -21,9 +21,15 @@ public class Death : MonoBehaviour
         worldManager=GetComponent<WorldManager>();
         animator=GetComponent<Animator>();
         controller=GameObject.Find("GoatCuttedd 1").GetComponent<Controller>();
-        enemy=GameObject.Find("hedgehog").GetComponent<enemy>();
-        HeadgeHog=GameObject.Find("hedgehog");
-        boxCollider2D=GameObject.Find("hedgehog").GetComponent<BoxCollider2D>();
+        enemy=GameObject.Find("hedgehog(Clone)").GetComponent<enemy>();
+        HeadgeHog=GameObject.Find("hedgehog(Clone)");
+        boxCollider2D=GameObject.Find("hedgehog(Clone)").GetComponent<BoxCollider2D>();
+   }
+
+   void Update()
+   {
+   
+    
    }
         
      
@@ -49,7 +55,7 @@ public class Death : MonoBehaviour
                 death=true;
                 enemy.enabled=true;
                StartCoroutine(StartCountDown());
-                StartCoroutine(StartCountDownEnemyRespawn());
+               
             }
            
           
@@ -64,15 +70,14 @@ public class Death : MonoBehaviour
        controller.enabled=true;
         particleSystem.Stop();
         death=false;
+         enemy=GameObject.Find("hedgehog(Clone)").GetComponent<enemy>();
+        HeadgeHog=GameObject.Find("hedgehog(Clone)");
+        boxCollider2D=GameObject.Find("hedgehog(Clone)").GetComponent<BoxCollider2D>();
+
        
     }
 
-      IEnumerator StartCountDownEnemyRespawn()
-    {
-      yield return new WaitForSecondsRealtime(1f);
-boxCollider2D.enabled=true;
-HeadgeHog.transform.position=EnemyRespawnPossition.position;
-    }
+
 
 }
 
