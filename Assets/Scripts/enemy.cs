@@ -26,7 +26,7 @@ public class enemy : MonoBehaviour
         if(death.death==true)
         {
              boxCollider2D.enabled=false;
-           transform.position = Vector2.MoveTowards(transform.position, position.position, 50f*Time.deltaTime);
+           transform.position = Vector2.MoveTowards(transform.position, position.position, 5000f*Time.deltaTime);
             StartCoroutine(StartCountDownEnemyRespawn());
         }
        

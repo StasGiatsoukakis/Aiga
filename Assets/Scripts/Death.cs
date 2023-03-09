@@ -7,12 +7,13 @@ public class Death : MonoBehaviour
   [SerializeField] Transform RespawnPossition;
   [SerializeField] Transform EnemyRespawnPossition;
   [SerializeField] new ParticleSystem particleSystem;
+  [SerializeField]enemy enemy;
+  [SerializeField]GameObject HeadgeHog;
+  [SerializeField] BoxCollider2D boxCollider2D;
   Animator animator;
   WorldManager worldManager;
   Controller controller;
-  [SerializeField]enemy enemy;
-  [SerializeField]GameObject HeadgeHog;
- [SerializeField] BoxCollider2D boxCollider2D;
+ 
 
   public bool death;
       
@@ -28,7 +29,10 @@ public class Death : MonoBehaviour
 
    void Update()
    {
-   
+    enemy=GameObject.Find("hedgehog(Clone)").GetComponent<enemy>();
+        HeadgeHog=GameObject.Find("hedgehog(Clone)");
+        boxCollider2D=GameObject.Find("hedgehog(Clone)").GetComponent<BoxCollider2D>();
+
     
    }
         
@@ -70,10 +74,7 @@ public class Death : MonoBehaviour
        controller.enabled=true;
         particleSystem.Stop();
         death=false;
-         enemy=GameObject.Find("hedgehog(Clone)").GetComponent<enemy>();
-        HeadgeHog=GameObject.Find("hedgehog(Clone)");
-        boxCollider2D=GameObject.Find("hedgehog(Clone)").GetComponent<BoxCollider2D>();
-
+        
        
     }
 
