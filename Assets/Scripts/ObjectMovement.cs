@@ -6,17 +6,17 @@ public class ObjectMovement : MonoBehaviour
 {
      
    public GameObject[] waypoints;
-   int current=0;
-   float rotSpeed;
    public float speed;
-   float WPradius=1;
+   private int current=0;
+   private float rotSpeed;
+   private float WPradius=1;
+   
+    
 
-
-
-
-
+   
     void Update()
     {
+        
 
         if(Vector2.Distance(waypoints[current].transform.position,transform.position)<WPradius)
         {
@@ -30,11 +30,9 @@ public class ObjectMovement : MonoBehaviour
         
     }
 
-/// <summary>
-/// Sent when another object enters a trigger collider attached to this
-/// object (2D physics only).
-/// </summary>
-/// <param name="other">The other Collider2D involved in this collision.</param>
+
+
+
 void OnTriggerEnter2D(Collider2D other)
 {
      if(other.gameObject.tag=="fliper1")

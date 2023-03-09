@@ -4,25 +4,27 @@ using UnityEngine;
 
 public class Death : MonoBehaviour
 {
-    private Animator animator;
-   
-      WorldManager worldManager;
-      Controller controller;
-     [SerializeField] Transform RespawnPossition;
-     [SerializeField] new ParticleSystem particleSystem;
+  [SerializeField] Transform RespawnPossition;
+  [SerializeField] Transform EnemyRespawnPossition;
+  [SerializeField] new ParticleSystem particleSystem;
+  Animator animator;
+  WorldManager worldManager;
+  Controller controller;
+  enemy enemy;
+  GameObject HeadgeHog;
+  BoxCollider2D boxCollider2D;
 
-    // Start is called before the first frame update
+  public bool death;
+      
     void Start()
     {
         worldManager=GetComponent<WorldManager>();
         animator=GetComponent<Animator>();
         controller=GameObject.Find("GoatCuttedd 1").GetComponent<Controller>();
+        enemy=GameObject.Find("hedgehog").GetComponent<enemy>();
+        HeadgeHog=GameObject.Find("hedgehog");
+        boxCollider2D=GameObject.Find("hedgehog").GetComponent<BoxCollider2D>();
    }
-        
-    
-
-    // Update is called once per frame
-   
         
      
       void OnTriggerEnter2D(Collider2D other)
@@ -30,9 +32,7 @@ public class Death : MonoBehaviour
           if(other.gameObject.tag=="enemy")
             {
                  StartCoroutine(StartCountDown());
-                 
                  --worldManager.lifes;
-                 
             }
       }
 
@@ -45,21 +45,34 @@ public class Death : MonoBehaviour
             {
                particleSystem.Play();
                controller.enabled=false;
-                 StartCoroutine(StartCountDown());
-                 --worldManager.lifes;
-                 
+               --worldManager.lifes;
+                death=true;
+                enemy.enabled=true;
+               StartCoroutine(StartCountDown());
+                StartCoroutine(StartCountDownEnemyRespawn());
             }
+           
           
       }
 
       IEnumerator StartCountDown()
     {
+      yield return new WaitForSecondsRealtime(1f);
+         enemy.enabled=false;
+       transform.position = RespawnPossition.position;
+       
+       controller.enabled=true;
+        particleSystem.Stop();
+        death=false;
+       
+    }
 
-      
-        yield return new WaitForSecondsRealtime(1);
-           transform.position = RespawnPossition.position;
-            controller.enabled=true;
-        
+      IEnumerator StartCountDownEnemyRespawn()
+    {
+      yield return new WaitForSecondsRealtime(1f);
+boxCollider2D.enabled=true;
+HeadgeHog.transform.position=EnemyRespawnPossition.position;
     }
-    }
+
+}
 

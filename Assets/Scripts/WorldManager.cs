@@ -6,19 +6,17 @@ public class WorldManager : MonoBehaviour
 {
     public uint lifes=1;
      [SerializeField] GameObject life1;
-  [SerializeField] GameObject life2;
+     [SerializeField] GameObject life2;
      [SerializeField] GameObject life3;
-
-     GameObject lifeHead;
      [SerializeField] new ParticleSystem particleSystem;
+     GameObject lifeHead;
+   
 
     // Start is called before the first frame update
     void Start()
     {
-       
- lifeHead=GameObject.Find("Head (3)");
-        
-    }
+       lifeHead=GameObject.Find("Head (3)");
+     }
 
     // Update is called once per frame
     void Update()

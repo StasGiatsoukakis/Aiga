@@ -6,7 +6,7 @@ public class bricks : MonoBehaviour
 {
     Rigidbody2D rb2d;
     [SerializeField] GameObject brick1;
-       [SerializeField] GameObject brick2;
+    [SerializeField] GameObject brick2;
       
 
     // Start is called before the first frame update
@@ -21,10 +21,7 @@ public class bricks : MonoBehaviour
         if((brick1==null)&&(brick2==null))
         {
              rb2d.constraints = RigidbodyConstraints2D.None;
-
              Destroy(this.gameObject,10f);
-
-           
         }
 
         
